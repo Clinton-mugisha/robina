@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fount Leadership & Strategy Group</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary: #0F2027; /* Deep Navy */
+            --secondary: #203A43; /* Teal/Grey */
+            --accent: #C5A059; /* Muted Gold for Boutique feel */
+            --light: #F9FAFB;
+            --white: #FFFFFF;
+            --text: #333333;
+            --text-light: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust based on your logo file */
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cta-btn {
+            background-color: var(--accent);
+            color: var(--white) !important;
+            padding: 10px 25px;
+            border-radius: 5px;
+        }
+
+        .cta-btn:hover {
+            background-color: #b08d4b;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 32, 39, 0.8), rgba(15, 32, 39, 0.8)), 
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin-top: 10px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: var(--primary);
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services {
+            background-color: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card ul {
+            margin-top: 15px;
+        }
+
+        .service-card li {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-card li::before {
+            content: '•';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- PACKAGES SECTION --- */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .pkg-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            height: 50px; /* alignment */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pkg-price {
+            font-size: 1.3rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .pkg-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .pkg-tag {
+            background: var(--primary);
+            color: var(--white);
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        /* --- CONTACT / FOOTER --- */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-info {
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none; /* Add JS for hamburger later if needed, hidden for simple CSS version */
+            }
+
+            .logo {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    FOUNT <span style="color:var(--accent); margin-left:5px;"> LEADERSHIP</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#contact" class="cta-btn">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Where People & Strategy Meet</h1>
+            <p>Unlocking the full potential of leaders, teams, and organizations.</p>
+            <a href="#services" class="hero-btn">Discover Our Solutions</a>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>About Fount Leadership</h2>
+                    <p>Fount Leadership & Strategy Group is a boutique consulting firm dedicated to helping leaders, teams, and organisations unlock their full potential.</p>
+                    <p>We specialise in leadership development, soft-skills mastery, organisational culture, and strategic planning.</p>
+                    <p class="highlight">"We believe that every organisation grows at the speed of its people."</p>
+                    <p>Our work bridges the gap between people and strategy, ensuring that companies not only define their goals but also build the capability to achieve them.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Consulting Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Practical, engaging, and high-impact solutions.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Leadership & Soft Skills Training</h3>
+                    <p>Transforming how people work, communicate, and lead.</p>
+                    <ul>
+                        <li>Leadership Excellence Program</li>
+                        <li>Emotional Intelligence at Work</li>
+                        <li>Communication & Confidence Mastery</li>
+                        <li>Supervisory Skills for New Managers</li>
+                        <li>Time Management & Productivity</li>
+                        <li>Customer Service Excellence</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Strategy & OD Consulting</h3>
+                    <p>We ensure that strategy is not just documented; but lived.</p>
+                    <ul>
+                        <li>Business Strategy Formulation</li>
+                        <li>Annual Planning & Execution</li>
+                        <li>KPIs & Performance Management</li>
+                        <li>Organisational Structure Redesign</li>
+                        <li>Culture-building & Engagement</li>
+                        <li>Change Management Support</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>Leadership Coaching</h3>
+                    <p>1:1 & Group Coaching to enhance confidence and impact.</p>
+                    <ul>
+                        <li>Supervisory Coaching</li>
+                        <li>Manager Coaching</li>
+                        <li>Women in Leadership Coaching</li>
+                        <li>Executive Leadership Coaching</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <h3>HR Advisory for SMEs</h3>
+                    <p>Structure, clarity, and improved employee performance.</p>
+                    <ul>
+                        <li>Recruitment Support</li>
+                        <li>Onboarding Systems</li>
+                        <li>Staff Engagement Programs</li>
+                        <li>Appraisal Systems</li>
+                        <li>Policy Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2>Signature Packages</h2>
+                <p>High-Value Client Offers designed for immediate impact.</p>
+            </div>
+
+            <div class="packages-grid">
+                <div class="package-card">
+                    <span class="pkg-tag">1 Day Intensive</span>
+                    <div class="pkg-title">Leadership Excellence Training</div>
+                    <div class="pkg-price">UGX 3.5M – 7M</div>
+                    <p class="pkg-desc">Focuses on communication, confidence, emotional intelligence, and team leaders.</p>
+                </div>
+
+                <div class="package-card">
+                    <span class="pkg-tag">4 Weeks</span>
+                    <div class="pkg-title">Manager Development Academy</div>
+                    <div class="pkg-price">UGX 6M – 12M</div>
+                    <p class="pkg-desc">Ideal for new supervisors and team leaders looking to step up.</p>
+                </div>
+
+                <div class="package-card">
+                    <span class="pkg-tag">Setup</span>
+                    <div class="pkg-title">Strategy & Performance Framework</div>
+                    <div class="pkg-price">UGX 10M – 20M</div>
+                    <p class="pkg-desc">We design the organisation’s strategy, KPIs, appraisal system, and reporting structure.</p>
+                </div>
+
+                <div class="package-card">
+                    <span class="pkg-tag">Transformation</span>
+                    <div class="pkg-title">Organisational Culture</div>
+                    <div class="pkg-price">UGX 15M – 30M</div>
+                    <p class="pkg-desc">For companies needing to build alignment, collaboration, and engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h2>Ready to unlock your potential?</h2>
+                <div class="footer-info">
+                    <p>Email: contact@fountleadership.com</p>
+                    <p>Phone: +256 700 000 000</p>
+                </div>
+                <a href="mailto:contact@fountleadership.com" class="cta-btn">Get In Touch</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Fount Leadership & Strategy Group. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
