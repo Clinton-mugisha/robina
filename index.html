@@ -4,272 +4,390 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fount Leadership & Strategy Group</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        /* --- 1. CORE SETTINGS --- */
+        /* --- DESIGN SYSTEM --- */
         :root {
-            --primary: #0B1E38; /* Deep Midnight Navy */
-            --primary-light: #162a47;
-            --accent: #D4AF37; /* Metallic Gold */
-            --accent-hover: #b5952f;
-            --bg-light: #F8F9FA;
-            --text-dark: #222222;
-            --text-gray: #555555;
+            /* Palette */
+            --navy-dark: #021223;
+            --navy-light: #0A2239;
+            --gold: #C5A059;
+            --gold-light: #E5C585;
+            --cream: #F9F7F2; /* Soft background, not harsh white */
             --white: #FFFFFF;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --text-body: #4A5568;
+            --text-head: #021223;
+            
+            /* Effects */
+            --glass: rgba(255, 255, 255, 0.95);
+            --shadow-soft: 0 20px 40px rgba(0,0,0,0.06);
+            --shadow-hover: 0 30px 60px rgba(0,0,0,0.12);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+
         body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.7;
-            background-color: var(--white);
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-body);
+            line-height: 1.8;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Montserrat', sans-serif;
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-head);
             font-weight: 700;
-            color: var(--primary);
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
-        a { text-decoration: none; transition: all 0.3s ease; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
         ul { list-style: none; }
-        
+        img { max-width: 100%; display: block; }
+
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        .section-padding { padding: 100px 0; }
+        .section-padding { padding: 120px 0; }
+
+        /* --- TYPOGRAPHY UTILITIES --- */
+        .display-text { font-size: 4.5rem; letter-spacing: -1px; }
+        .heading-lg { font-size: 3rem; margin-bottom: 1.5rem; }
+        .heading-md { font-size: 1.75rem; margin-bottom: 1rem; }
+        .subheading {
+            font-family: 'Manrope', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
         
-        .text-center { text-align: center; }
-        .text-accent { color: var(--accent); }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            position: relative;
+        .btn-gold {
             display: inline-block;
-        }
-        
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            max-width: 600px;
-            margin: 0 auto 60px auto;
+            background: var(--gold);
+            color: var(--white);
+            padding: 16px 36px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
         }
 
-        /* --- 2. NAVIGATION --- */
+        .btn-gold::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 0%;
+            background-color: var(--navy-dark);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-gold:hover::after { height: 100%; }
+        .btn-gold:hover { color: var(--gold); }
+
+        /* --- NAVIGATION (Glassmorphism) --- */
         header {
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 0; left: 0; width: 100%;
             z-index: 1000;
-            background: transparent;
-            transition: 0.4s ease;
+            padding: 20px 0;
+            transition: var(--transition);
         }
 
         header.scrolled {
-            background: var(--white);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            padding: 10px 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 15px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 90px;
-            transition: 0.4s;
-        }
-
-        header.scrolled nav { height: 70px; }
+        nav { display: flex; justify-content: space-between; align-items: center; }
 
         .logo {
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -1px;
-            text-transform: uppercase;
-            z-index: 1001; /* Ensure logo stays above mobile menu if needed */
+            font-weight: 700;
+            color: var(--navy-dark);
+            letter-spacing: -0.5px;
+            z-index: 2000;
         }
+        .logo span { color: var(--gold); font-style: italic; }
+
+        .nav-menu { display: flex; gap: 40px; align-items: center; }
         
-        .logo span { color: var(--accent); }
-        header.scrolled .logo { color: var(--primary); }
-
-        .nav-links { display: flex; gap: 40px; }
-
-        .nav-links a {
-            color: rgba(255,255,255,0.9);
+        .nav-link {
+            font-size: 0.9rem;
             font-weight: 500;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--navy-dark);
+            position: relative;
         }
 
-        .nav-links a:hover { color: var(--accent); }
-
-        header.scrolled .nav-links a { color: var(--primary); }
-        header.scrolled .nav-links a:hover { color: var(--accent); }
-
-        .btn-main {
-            background-color: var(--accent);
-            color: var(--white) !important;
-            padding: 12px 30px;
-            border-radius: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0; width: 0%; height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
         }
 
-        .btn-main:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-        }
+        .nav-link:hover::before { width: 100%; }
 
-        /* --- BURGER ICON (Default Hidden) --- */
-        .burger {
-            display: none; 
-            cursor: pointer;
-            z-index: 2001; /* Must be higher than nav-links */
-        }
-        
-        .burger i {
-            font-size: 1.8rem;
-            color: var(--white);
-            transition: 0.3s;
-        }
-        
-        header.scrolled .burger i { color: var(--primary); }
+        /* Mobile Burger */
+        .burger { display: none; cursor: pointer; z-index: 2001; font-size: 1.5rem; color: var(--navy-dark); }
 
-        /* --- 3. HERO SECTION --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(11, 30, 56, 0.85), rgba(11, 30, 56, 0.7)),
-                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
+            overflow: hidden;
+            background: var(--navy-dark);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            opacity: 0.4;
+            transform: scale(1.1);
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.15); } }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            max-width: 800px;
+        }
+
+        .hero-content h1 { color: var(--white); margin-bottom: 2rem; }
+        .hero-content p { font-size: 1.25rem; color: rgba(255,255,255,0.8); margin-bottom: 3rem; max-width: 600px; }
+
+        /* --- ABOUT (Asymmetrical Grid) --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+            height: 600px;
+        }
+
+        .img-1 {
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 1;
+            filter: grayscale(20%);
+        }
+
+        .img-2 {
+            width: 50%;
+            height: 50%;
+            object-fit: cover;
+            position: absolute;
+            bottom: 0; right: 0;
+            z-index: 2;
+            border: 10px solid var(--cream);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-box {
+            margin-top: 30px;
+            padding: 30px;
+            background: var(--white);
+            border-left: 4px solid var(--gold);
+            box-shadow: var(--shadow-soft);
+        }
+        .stat-box p { font-size: 1.1rem; font-style: italic; color: var(--navy-dark); font-family: 'Playfair Display', serif; }
+
+        /* --- SERVICES (Dark Mode Cards) --- */
+        .services { background-color: var(--navy-dark); color: var(--white); position: relative; }
+        .services::before {
+            content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.2) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        .services h2 { color: var(--white); }
+        .services .subheading { color: var(--gold-light); }
+        .services p { color: rgba(255,255,255,0.7); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.06);
+            border-color: var(--gold);
+        }
+
+        .service-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 25px; }
+        .service-card h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 15px; font-family: 'Manrope', sans-serif; font-weight: 600; }
+        
+        .service-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .service-list li::before {
+            content: '•'; color: var(--gold);
+            position: absolute; left: 0;
+        }
+
+        /* --- PACKAGES (Clean Luxury) --- */
+        .packages { background: var(--cream); }
+        
+        .pkg-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .pkg-card {
+            background: var(--white);
+            padding: 50px 30px;
             text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .pkg-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .pkg-card.featured {
+            border: 1px solid var(--gold);
+            position: relative;
+        }
+        
+        .pkg-card.featured::after {
+            content: 'RECOMMENDED';
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            background: var(--gold); color: var(--navy-dark);
+            padding: 5px 15px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+        }
+
+        .pkg-name { font-family: 'Manrope', sans-serif; font-weight: 700; text-transform: uppercase; color: var(--gold); letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 15px; }
+        .pkg-price { font-size: 1.5rem; color: var(--navy-dark); font-weight: 700; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+        .pkg-desc { font-size: 0.95rem; color: var(--text-body); margin-bottom: 30px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--navy-dark);
+            color: rgba(255,255,255,0.6);
+            padding: 100px 0 30px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand h2 { color: var(--white); font-size: 2rem; margin-bottom: 20px; }
+        .footer-brand p { max-width: 300px; margin-bottom: 30px; }
+        
+        .footer-col h4 { color: var(--white); font-family: 'Manrope', sans-serif; font-size: 1.1rem; margin-bottom: 25px; }
+        .footer-col a { display: block; margin-bottom: 15px; transition: 0.3s; }
+        .footer-col a:hover { color: var(--gold); padding-left: 5px; }
+
+        .copyright { text-align: center; font-size: 0.85rem; }
+
+        /* --- MOBILE MENU OVERLAY --- */
+        .mobile-menu {
+            position: fixed;
+            top: 0; right: -100%;
+            width: 100%; height: 100vh;
+            background: var(--navy-dark);
+            z-index: 1500;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .mobile-menu.active { right: 0; }
+        
+        .mobile-menu a {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
             color: var(--white);
-            padding-top: 80px;
+            margin: 15px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.3s;
         }
 
-        .hero-content h1 {
-            font-size: 3.8rem;
-            margin-bottom: 20px;
-            color: var(--white);
-            animation: fadeInUp 1s ease;
-        }
+        .mobile-menu.active a { opacity: 1; transform: translateY(0); }
+        .mobile-menu a:hover { color: var(--gold); }
 
-        .hero-content p {
-            font-size: 1.3rem;
-            font-weight: 300;
-            margin-bottom: 40px;
-            color: #ddd;
-            animation: fadeInUp 1.2s ease;
-        }
-
-        /* --- 4. SECTIONS (About, Services, etc) --- */
-        .about { background-color: var(--white); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .about-content h2 { font-size: 2.2rem; margin-bottom: 25px; }
-        .about-content p { margin-bottom: 20px; color: var(--text-gray); }
-        .quote-box { border-left: 5px solid var(--accent); padding-left: 20px; margin: 30px 0; font-style: italic; font-weight: 500; color: var(--primary); font-size: 1.1rem; }
-        .about-img img { width: 100%; border-radius: 8px; box-shadow: var(--shadow); }
-
-        .services { background-color: var(--bg-light); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card { background: var(--white); padding: 40px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: 0.3s; position: relative; overflow: hidden; border-top: 3px solid transparent; }
-        .service-card:hover { transform: translateY(-10px); border-top: 3px solid var(--accent); box-shadow: var(--shadow); }
-        .icon-box { width: 60px; height: 60px; background: rgba(11, 30, 56, 0.05); color: var(--primary); display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; margin-bottom: 25px; transition: 0.3s; }
-        .service-card:hover .icon-box { background: var(--primary); color: var(--white); }
-        .service-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
-        .service-list li { font-size: 0.95rem; color: var(--text-gray); margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .service-list li::before { content: '\f00c'; font-family: 'Font Awesome 5 Free'; font-weight: 900; color: var(--accent); position: absolute; left: 0; font-size: 0.8rem; top: 4px; }
-
-        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
-        .pkg-card { background: var(--white); border: 1px solid #eee; border-radius: 10px; padding: 40px 30px; text-align: center; transition: 0.3s; }
-        .pkg-card:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: scale(1.02); }
-        .pkg-header { margin-bottom: 25px; }
-        .pkg-subtitle { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-        .pkg-title { font-size: 1.3rem; margin: 10px 0; color: var(--primary); height: 50px; display: flex; align-items: center; justify-content: center; }
-        .price-tag { background: var(--bg-light); padding: 15px; border-radius: 5px; margin-bottom: 20px; }
-        .price-tag span { display: block; font-size: 1.2rem; font-weight: 700; color: var(--primary); }
-        .pkg-desc { font-size: 0.9rem; color: var(--text-gray); }
-
-        footer { background: var(--primary); color: var(--white); padding-top: 80px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 60px; }
-        .footer-col h3 { color: var(--white); margin-bottom: 20px; font-size: 1.2rem; }
-        .footer-col p, .footer-col a { color: #aaa; font-size: 0.95rem; margin-bottom: 10px; display: block; }
-        .footer-col a:hover { color: var(--accent); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 25px 0; text-align: center; color: #777; font-size: 0.9rem; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- 5. RESPONSIVE & MOBILE MENU FIX --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 992px) {
-            .hero-content h1 { font-size: 2.8rem; }
+            .display-text { font-size: 3rem; }
             .about-grid { grid-template-columns: 1fr; }
+            .about-images { height: 400px; margin-bottom: 50px; }
+            .nav-menu { display: none; }
+            .burger { display: block; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
-            /* Show Burger */
-            .burger { display: block; }
-
-            /* Fix Mobile Menu Style */
-            .nav-links {
-                position: fixed;
-                right: -100%; /* Start Hidden off-screen */
-                top: 0;
-                height: 100vh;
-                width: 75%; /* Drawer Width */
-                background-color: var(--primary);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                transition: 0.4s ease-in-out;
-                z-index: 2000; /* High Z-index to sit on top */
-                box-shadow: -10px 0 20px rgba(0,0,0,0.3);
-                gap: 30px;
-                padding-top: 60px;
-            }
-
-            /* Active State (Class added by JS) */
-            .nav-links.active {
-                right: 0; /* Slide in */
-            }
-
-            /* Links inside mobile menu */
-            .nav-links a {
-                color: var(--white) !important;
-                font-size: 1.2rem;
-                opacity: 0; /* Start invisible for animation */
-            }
-
-            /* Link Animation when menu opens */
-            .nav-links.active a {
-                opacity: 1;
-                transition: opacity 0.5s ease 0.2s;
-            }
-
-            /* Font adjustments for mobile */
-            .hero-content h1 { font-size: 2.2rem; }
-            .section-title { font-size: 2rem; }
+        @media (max-width: 576px) {
+            .footer-top { grid-template-columns: 1fr; }
+            .heading-lg { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -279,16 +397,14 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    FOUNT<span>LEADERSHIP</span>
+                    FOUNT<span>.</span>
                 </div>
-                
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#packages">Signature Packages</a></li>
-                    <li><a href="#contact" class="btn-main">Contact Us</a></li>
+                <ul class="nav-menu">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Expertise</a></li>
+                    <li><a href="#packages" class="nav-link">Packages</a></li>
+                    <li><a href="#contact" class="btn-gold">Contact Us</a></li>
                 </ul>
-                
                 <div class="burger">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -296,30 +412,40 @@
         </div>
     </header>
 
+    <div class="mobile-menu">
+        <a href="#about">About</a>
+        <a href="#services">Expertise</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact">Contact</a>
+    </div>
+
     <section class="hero">
-        <div class="container hero-content">
-            <h1>Where People & Strategy Meet</h1>
-            <p>We help leaders, teams, and organizations unlock their full potential.</p>
-            <a href="#services" class="btn-main" style="padding: 15px 40px; font-size: 1rem;">Explore Our Services</a>
+        <div class="hero-bg"></div>
+        <div class="container hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <span class="subheading">Leadership & Strategy Group</span>
+            <h1 class="display-text">Where People <br><em>& Strategy Meet.</em></h1>
+            <p>Unlocking the full potential of leaders, teams, and organizations through bespoke consulting and high-impact development.</p>
+            <a href="#services" class="btn-gold">Explore Solutions</a>
         </div>
     </section>
 
-    <section id="about" class="section-padding about">
+    <section id="about" class="section-padding">
         <div class="container">
             <div class="about-grid">
-                <div class="about-content">
-                    <h5 class="text-accent">WHO WE ARE</h5>
-                    <h2>Bridging the Gap Between People & Strategy</h2>
-                    <p>Fount Leadership & Strategy Group is a boutique consulting firm dedicated to helping leaders, teams, and organisations unlock their full potential. We specialise in leadership development, soft-skills mastery, organisational culture, and strategic planning.</p>
+                <div class="about-text" data-aos="fade-right">
+                    <span class="subheading">About Us</span>
+                    <h2 class="heading-lg">Every organization grows at the speed of its people.</h2>
+                    <p style="margin-bottom: 20px;">Fount Leadership & Strategy Group is a boutique consulting firm dedicated to bridging the critical gap between high-level strategy and human capability.</p>
+                    <p>We do not just document strategy; we ensure it is lived, breathed, and executed by empowering your workforce with the skills they need to succeed.</p>
                     
-                    <div class="quote-box">
-                        "We believe that every organisation grows at the speed of its people."
+                    <div class="stat-box">
+                        <p>"We build the capability to achieve your goals."</p>
                     </div>
-                    
-                    <p>We ensure that companies not only define their goals but also build the capability to achieve them.</p>
                 </div>
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" alt="Consulting Strategy Meeting">
+
+                <div class="about-images" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80" alt="Executive Meeting" class="img-1">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=688&q=80" alt="Leadership" class="img-2">
                 </div>
             </div>
         </div>
@@ -327,116 +453,90 @@
 
     <section id="services" class="section-padding services">
         <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Our Expertise</h2>
-                <p class="section-subtitle">Practical, engaging, and high-impact solutions tailored to your needs.</p>
+            <div class="text-center" style="max-width: 700px; margin: 0 auto;" data-aos="fade-up">
+                <span class="subheading">Our Expertise</span>
+                <h2 class="heading-lg">High-Impact Solutions</h2>
+                <p>Practical, engaging programs that transform how people work, communicate, and lead.</p>
             </div>
 
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-user-tie"></i></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon"><i class="fas fa-users-cog"></i></div>
                     <h3>Leadership & Soft Skills</h3>
-                    <p style="margin-bottom:15px; font-size:0.9rem;">Transforming how people work, communicate, and lead with sustainable results.</p>
                     <ul class="service-list">
                         <li>Leadership Excellence Program</li>
                         <li>Emotional Intelligence at Work</li>
-                        <li>Communication Mastery</li>
+                        <li>Communication & Confidence</li>
                         <li>Supervisory Skills</li>
-                        <li>Customer Service Excellence</li>
                     </ul>
                 </div>
 
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-chess-knight"></i></div>
-                    <h3>Strategy & OD Consulting</h3>
-                    <p style="margin-bottom:15px; font-size:0.9rem;">Designing strategies that align with your vision and strengthen performance.</p>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon"><i class="fas fa-chess-queen"></i></div>
+                    <h3>Strategy & Consulting</h3>
                     <ul class="service-list">
                         <li>Business Strategy Formulation</li>
-                        <li>KPIs & Performance Systems</li>
+                        <li>KPIs & Performance Mgmt</li>
                         <li>Org Structure Redesign</li>
-                        <li>Culture-building</li>
-                        <li>Workflow Optimisation</li>
+                        <li>Culture & Engagement</li>
                     </ul>
                 </div>
 
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-comments"></i></div>
-                    <h3>Leadership Coaching</h3>
-                    <p style="margin-bottom:15px; font-size:0.9rem;">1:1 and Group coaching for supervisors, managers, and founders.</p>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Executive Coaching</h3>
                     <ul class="service-list">
                         <li>Supervisory Coaching</li>
                         <li>Manager Coaching</li>
                         <li>Women in Leadership</li>
-                        <li>Executive Leadership</li>
+                        <li>Executive Presence</li>
                     </ul>
                 </div>
 
-                <div class="service-card">
-                    <div class="icon-box"><i class="fas fa-handshake"></i></div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon"><i class="fas fa-handshake-simple"></i></div>
                     <h3>HR Advisory for SMEs</h3>
-                    <p style="margin-bottom:15px; font-size:0.9rem;">Providing structure and clarity for organizations growing their teams.</p>
                     <ul class="service-list">
                         <li>Recruitment Support</li>
                         <li>Onboarding Systems</li>
-                        <li>Appraisal Systems</li>
                         <li>Policy Development</li>
-                        <li>Staff Engagement</li>
+                        <li>Appraisal Systems</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="packages" class="section-padding">
+    <section id="packages" class="section-padding packages">
         <div class="container">
-            <div class="text-center">
-                <h2 class="section-title">Signature Packages</h2>
-                <p class="section-subtitle">High-value offers designed for immediate organizational impact.</p>
+            <div class="text-center" data-aos="fade-up">
+                <span class="subheading">Signature Packages</span>
+                <h2 class="heading-lg">Investment in Excellence</h2>
             </div>
 
-            <div class="packages-grid">
-                <div class="pkg-card">
-                    <div class="pkg-header">
-                        <span class="pkg-subtitle">1 Day Intensive</span>
-                        <div class="pkg-title">Leadership Excellence</div>
-                    </div>
-                    <div class="price-tag">
-                        <span>UGX 3.5M – 7M</span>
-                    </div>
+            <div class="pkg-grid">
+                <div class="pkg-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pkg-name">1 Day Intensive</div>
+                    <h3>Leadership Excellence</h3>
+                    <div class="pkg-price">3.5M - 7M <span style="font-size: 1rem; font-weight: 400;">UGX</span></div>
                     <p class="pkg-desc">Focuses on communication, confidence, emotional intelligence, and team leaders.</p>
+                    <a href="#contact" class="btn-gold" style="background: var(--navy-dark); color: white;">Inquire</a>
                 </div>
 
-                <div class="pkg-card">
-                    <div class="pkg-header">
-                        <span class="pkg-subtitle">4 Weeks Academy</span>
-                        <div class="pkg-title">Manager Development</div>
-                    </div>
-                    <div class="price-tag">
-                        <span>UGX 6M – 12M</span>
-                    </div>
-                    <p class="pkg-desc">Ideal for new supervisors and team leaders looking to step up.</p>
+                <div class="pkg-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pkg-name">Setup & Design</div>
+                    <h3>Strategy Framework</h3>
+                    <div class="pkg-price">10M - 20M <span style="font-size: 1rem; font-weight: 400;">UGX</span></div>
+                    <p class="pkg-desc">We design the organisation’s strategy, KPIs, appraisal system, and reporting structure.</p>
+                    <a href="#contact" class="btn-gold">Get Started</a>
                 </div>
 
-                <div class="pkg-card" style="border-color: var(--accent); box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);">
-                    <div class="pkg-header">
-                        <span class="pkg-subtitle" style="color:var(--primary);">Best Value - Setup</span>
-                        <div class="pkg-title">Strategy & Framework</div>
-                    </div>
-                    <div class="price-tag" style="background: var(--primary); color: white;">
-                        <span style="color: white;">UGX 10M – 20M</span>
-                    </div>
-                    <p class="pkg-desc">Design of strategy, KPIs, appraisal systems, and reporting structures.</p>
-                </div>
-
-                <div class="pkg-card">
-                    <div class="pkg-header">
-                        <span class="pkg-subtitle">Transformation</span>
-                        <div class="pkg-title">Organizational Culture</div>
-                    </div>
-                    <div class="price-tag">
-                        <span>UGX 15M – 30M</span>
-                    </div>
-                    <p class="pkg-desc">For companies needing to build alignment, collaboration, and engagement.</p>
+                <div class="pkg-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pkg-name">Transformation</div>
+                    <h3>Culture Building</h3>
+                    <div class="pkg-price">15M - 30M <span style="font-size: 1rem; font-weight: 400;">UGX</span></div>
+                    <p class="pkg-desc">For companies needing to build alignment, collaboration, and high engagement.</p>
+                    <a href="#contact" class="btn-gold" style="background: var(--navy-dark); color: white;">Inquire</a>
                 </div>
             </div>
         </div>
@@ -444,70 +544,93 @@
 
     <footer id="contact">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>FOUNT LEADERSHIP</h3>
-                    <p>Where People and Strategy Meet.</p>
-                    <p>Unlocking the full potential of your organization.</p>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h2>FOUNT.</h2>
+                    <p>Unlock the full potential of your leaders, teams, and organization.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: var(--white); font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color: var(--white); font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: var(--white); font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
+
                 <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> info@fountleadership.com</p>
-                    <p><i class="fas fa-phone"></i> +256 700 000 000</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Kampala, Uganda</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
+                    <h4>Company</h4>
                     <a href="#about">About Us</a>
-                    <a href="#services">Our Services</a>
-                    <a href="#packages">Packages</a>
+                    <a href="#services">Services</a>
+                    <a href="#packages">Pricing</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="mailto:info@fount.com">info@fount.com</a>
+                    <a href="tel:+256700000000">+256 700 000 000</a>
+                    <a href="#">Kampala, Uganda</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="copyright">
                 &copy; 2026 Fount Leadership & Strategy Group. All Rights Reserved.
             </div>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Sticky Header Effect
+        // 1. Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+        });
+
+        // 2. Sticky Header Logic
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Mobile Menu Logic
+        // 3. Mobile Menu Logic (Improved)
         const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links a');
+        const menu = document.querySelector('.mobile-menu');
+        const menuLinks = document.querySelectorAll('.mobile-menu a');
         const icon = burger.querySelector('i');
+        let isMenuOpen = false;
 
-        // Toggle Menu
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
+        burger.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        menuLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
             
-            // Toggle Icon (Bars to Times)
-            if(nav.classList.contains('active')){
+            if (isMenuOpen) {
+                menu.classList.add('active');
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
-                burger.style.color = '#fff'; // Always white when open
+                // Staggered animation for links
+                menuLinks.forEach((link, index) => {
+                    link.style.transitionDelay = `${index * 0.1 + 0.2}s`;
+                });
             } else {
+                menu.classList.remove('active');
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
-                // Reset color to CSS defaults
-                burger.style.color = ''; 
+                // Reset delays
+                menuLinks.forEach(link => {
+                    link.style.transitionDelay = '0s';
+                });
             }
-        });
-
-        // Close Menu when a link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                burger.style.color = '';
-            });
-        });
+        }
     </script>
 </body>
 </html>
