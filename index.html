@@ -461,7 +461,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 40px;
             margin-top: 60px;
         }
@@ -508,6 +508,16 @@
             color: var(--gold);
             position: absolute;
             left: 0;
+        }
+
+        .service-package {
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gold-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
         /* --- PACKAGES (Clean Luxury) --- */
@@ -694,6 +704,11 @@
             .footer-top {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
         }
 
         @media (max-width: 576px) {
@@ -703,6 +718,10 @@
 
             .heading-lg {
                 font-size: 2.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -824,6 +843,30 @@
                         <li>Policy Development</li>
                         <li>Appraisal Systems</li>
                     </ul>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Startup Investor Readiness &amp; Fundraising Support</h3>
+                    <ul class="service-list">
+                        <li>Investor Readiness Assessment</li>
+                        <li>Business Model &amp; Growth Story</li>
+                        <li>Pitch Deck &amp; Executive Summary</li>
+                        <li>Due Diligence &amp; Fundraising Strategy</li>
+                    </ul>
+                    <div class="service-package">Signature: Investor Ready Startup</div>
+                </div>
+
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon"><i class="fas fa-gears"></i></div>
+                    <h3>Operations Management &amp; Performance Improvement</h3>
+                    <ul class="service-list">
+                        <li>Operations Assessments</li>
+                        <li>Process &amp; Workflow Improvement</li>
+                        <li>Team Accountability, KPIs &amp; Reporting</li>
+                        <li>Supply Chain &amp; Service Delivery</li>
+                    </ul>
+                    <div class="service-package">Signature: Operations Excellence</div>
                 </div>
             </div>
         </div>
